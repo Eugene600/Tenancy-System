@@ -1,0 +1,61 @@
+<div class="register-container">
+    <div class="register-box">
+        <h2>Create Account 👋</h2>
+  
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      
+      <div class="input-group">
+        <label>First Name</label>
+        <input type="text" formControlName="firstName" placeholder="Enter first name">
+        <span class="error" *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">Required (Min 2 chars)</span>
+      </div>
+  
+      <div class="input-group">
+        <label>Last Name</label>
+        <input type="text" formControlName="lastName" placeholder="Enter last name">
+        <span class="error" *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched">Required (Min 2 chars)</span>
+      </div>
+  
+      <div class="input-group">
+        <label>Gender</label>
+        <select formControlName="gender">
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <span class="error" *ngIf="registerForm.get('gender')?.invalid && registerForm.get('gender')?.touched">Required</span>
+      </div>
+  
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" formControlName="email" placeholder="Enter email">
+        <span class="error" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">Enter a valid email</span>
+      </div>
+  
+      <div class="input-group">
+        <label>Date of Birth</label>
+        <input type="date" formControlName="dob">
+        <span class="error" *ngIf="registerForm.get('dob')?.invalid && registerForm.get('dob')?.touched">Required</span>
+      </div>
+  
+      <div class="input-group">
+        <label>Password</label>
+        <input [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="Enter password">
+        <span class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">Min 6 characters</span>
+      </div>
+  
+      <div class="input-group">
+        <label>Confirm Password</label>
+        <input [type]="hidePassword ? 'password' : 'text'" formControlName="confirmPassword" placeholder="Confirm password">
+        <span class="error" *ngIf="registerForm.hasError('mismatch')">Passwords must match</span>
+      </div>
+  
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  
+    </form>
+  
+    <p class="register-link">Already have an account? <a routerLink="/login">Login</a></p>
+  </div>
+    </div>
+    
+  
